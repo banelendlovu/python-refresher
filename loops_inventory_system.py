@@ -36,21 +36,21 @@ for n, prod in enumerate(products):
 
 # PART 4: WHILE LOOPS
 
-order_number = 0
+order_number = 1
 
-while (order_number < 6):
-    order_number = order_number + 1
+while order_number <= 5:
     print(f'Processing order {order_number}')
+    order_number += 1
+    
 
 # PART 5: CONTINUE
 
 order_ids = ['ORD-101', 'ORD-102', 'TEST-103', 'ORD-104', 'TEST-105', 'ORD-106']
 
 for order in order_ids:
-    for char in order:
-        if char == 'TEST':
-            continue
-        print(f'Processing order {order}')
+    if order.startswith('TEST'):
+        continue
+    print(f'Processing {order}')
     
 
 # PART 6: BREAK
@@ -82,11 +82,9 @@ search_product = 'Printer'
 for p in inventory:
     if p == search_product:
         print('Product found!')
-
         break
-
-    else:
-        print('Product not found.')
+else:
+    print('Product not found.')
 
 
 # PART 9: NESTED LOOPS
@@ -97,10 +95,11 @@ warehouses = {
     "Vancouver": ["Webcam", "Speakers"]
 }
 
-for location in warehouses:
-    for loc, item in warehouses:
-        print(item)
+for location, products in warehouses.items():
     print(location)
+
+    for item in products:
+        print(f'- {item}')
 
     
 
