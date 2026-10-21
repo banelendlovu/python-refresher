@@ -1,4 +1,5 @@
 # COMPREHENSIVE PRACTICE
+
 # Variables → Data Types → Strings → Lists → Tuples → Sets → Dictionaries → Functions → Loops
 
 
@@ -154,7 +155,7 @@ print(total_products)
 
 customers = []
 for order in orders:
-    name = order["customer"]
+    name = order["customer"].strip()
     customers.append(name)
 print(customers)
 
@@ -187,5 +188,80 @@ def clean(customer):
 clean(' Sarah')
 
 status = lambda order: "Needs Attention" if order == "delayed" else "On Track"
-print(status)
+print(status("delayed"))
+print(status("shipped"))
 
+# PART 9 - map() and filter()
+
+clean_names = list(map(lambda x: x["customer"].strip(), orders))
+print(clean_names)
+
+greater_than_1 = list(filter(lambda x: x["quantity"] > 1, orders))
+print(greater_than_1)
+
+# PART 10 - Loops
+
+for i, j in enumerate(orders, start=1):
+    order_id = j["order_id"]
+    print(f'{i}.{order_id}')
+
+count = 0
+
+for x in orders:
+    if x["status"] == "shipped":
+        count = count + 1
+
+print(count)
+
+i = 0
+
+while i < len(orders):
+    order_id = orders[i]["order_id"]
+    i = i + 1
+    print(f'Processing order {order_id}')
+
+# PART 11 - break, continue and pass
+
+for x in orders:
+    if x["status"] == "delayed":
+        continue
+    print(x)
+
+for x in orders:
+    if x["status"] == "delayed":
+        break
+    print(x)
+
+for x in orders:
+    if x["status"] == "processing":
+        pass
+    print(x)
+
+# PART 12 - Loop else
+
+for x in orders:
+    if x["order_id"] == "ORD-1005":
+        print("Order found!")
+        break
+else:
+    print("Order not found.")
+
+for x in orders:
+    if x["order_id"] == "ORD-1003":
+        print("Order found!")
+        break
+else:
+    print("Order not found.")
+
+# PART 13 - Nested Loops
+
+warehouses = {
+    "Atlanta": ["Laptop", "Monitor"],
+    "Toronto": ["Keyboard", "Mouse"],
+    "Vancouver": ["Webcam", "Speakers"]
+}
+
+for key, value in warehouses.items():
+    print(key)
+    for item in value:
+        print(f'-{item}')
