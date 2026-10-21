@@ -173,3 +173,19 @@ store_summary['store_status'] = "Processing Orders"
 
 for item in store_summary:
     print(f'total_orders: {len(orders)}\n\ntotal_products: {total_products}' )
+
+# PART 8 - Functions
+
+def calculate_order_total(price, quantity):
+    return price * quantity
+
+calculate_order_total(899.99, 2)
+
+def clean(customer):
+    return customer.strip().upper()
+
+clean(' Sarah')
+
+status = lambda order: "Needs Attention" if order == "delayed" else "On Track"
+print(status)
+
